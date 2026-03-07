@@ -1,7 +1,7 @@
 /**
  * Version 11.0
  */
-public class PalindromeCheckerApp{
+public class PalindromeCheckerApp {
 
     /**
      * Application entry point for UC11.
@@ -31,7 +31,6 @@ class PalindromeService {
      */
     public boolean checkPalindrome(String input) {
 
-        // Initialize pointers
         int start = 0;
         int end = input.length() - 1;
 
