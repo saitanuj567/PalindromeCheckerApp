@@ -1,35 +1,50 @@
 /**
- * MAIN CLASS - UseCase9PalindromeCheckerApp
- *
- * Use Case 9: Recursive Palindrome Checker
+ * Version 11.0
  */
-
 public class PalindromeCheckerApp {
 
+    /**
+     * Application entry point for UC11.
+     * @param args command-line arguments
+     */
     public static void main(String[] args) {
 
-        String input = "madam";
+        String input = "racecar";
 
-        boolean result = check(input, 0, input.length() - 1);
+        PalindromeService service = new PalindromeService();
+        boolean result = service.checkPalindrome(input);
 
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + result);
     }
+}
+
+/**
+ * Service class that contains palindrome logic.
+ */
+class PalindromeService {
 
     /**
-     * Recursive palindrome check
+     * Checks whether the input string is a palindrome.
+     * @param input input string
+     * @return true if palindrome, false otherwise
      */
-    private static boolean check(String s, int start, int end) {
+    public boolean checkPalindrome(String input) {
 
-        // Base condition
-        if (start >= end)
-            return true;
+        int start = 0;
+        int end = input.length() - 1;
 
-        // Mismatch condition
-        if (s.charAt(start) != s.charAt(end))
-            return false;
+        // Compare characters moving inward
+        while (start < end) {
 
-        // Recursive call
-        return check(s, start + 1, end - 1);
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
+            }
+
+            start++;
+            end--;
+        }
+
+        return true;
     }
 }
