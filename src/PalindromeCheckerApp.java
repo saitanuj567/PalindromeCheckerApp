@@ -1,20 +1,31 @@
-public class gir {
+/**
+ * MAIN CLASS - UseCase4PalindromeCheckerApp
+ *
+ * Use Case 4: Character Array Based Palindrome Check
+ */
 
-    /**
-     * MAIN CLASS - UseCase1PalindromeCheckerApp
-     *
-     * Use Case 1: Application Entry & Welcome Message
-     */
+public class PalindromeCheckerApp {
 
+    public static void main(String[] args) {
 
-        /**
-         * Application entry point.
-         */
-        public static void main(String[] args) {
+        // Hardcoded string
+        String input = "madam";
 
-            System.out.println("Welcome to the Palindrome Checker Management System");
-            System.out.println("Version : 1.0");
-            System.out.println("System initialized successfully.");
+        // Convert to character array
+        char[] chars = input.toCharArray();
+
+        boolean isPalindrome = true;
+
+        // Compare characters from both ends
+        for (int i = 0; i < chars.length / 2; i++) {
+            if (chars[i] != chars[chars.length - 1 - i]) {
+                isPalindrome = false;
+                break;
+            }
         }
-    }
 
+        // Display result
+        System.out.println("Input text: " + input);
+        System.out.println("Is it a Palindrome? : " + isPalindrome);
+    }
+}
