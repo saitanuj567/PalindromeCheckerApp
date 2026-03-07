@@ -1,38 +1,35 @@
-import java.util.Stack;
-
 /**
- * MAIN CLASS - UseCase5PalindromeCheckerApp
+ * MAIN CLASS - UseCase9PalindromeCheckerApp
  *
- * Use Case 5: Stack-Based Palindrome Check
+ * Use Case 9: Recursive Palindrome Checker
  */
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Hardcoded input
-        String input = "noon";
+        String input = "madam";
 
-        // Create stack
-        Stack<Character> stack = new Stack<>();
+        boolean result = check(input, 0, input.length() - 1);
 
-        // Push characters into stack
-        for (char c : input.toCharArray()) {
-            stack.push(c);
-        }
-
-        boolean isPalindrome = true;
-
-        // Compare with popped characters
-        for (char c : input.toCharArray()) {
-            if (c != stack.pop()) {
-                isPalindrome = false;
-                break;
-            }
-        }
-
-        // Display result
         System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome);
+        System.out.println("Is Palindrome? : " + result);
+    }
+
+    /**
+     * Recursive palindrome check
+     */
+    private static boolean check(String s, int start, int end) {
+
+        // Base condition
+        if (start >= end)
+            return true;
+
+        // Mismatch condition
+        if (s.charAt(start) != s.charAt(end))
+            return false;
+
+        // Recursive call
+        return check(s, start + 1, end - 1);
     }
 }
