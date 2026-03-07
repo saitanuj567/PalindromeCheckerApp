@@ -1,50 +1,39 @@
+import java.util.Deque;
+import java.util.ArrayDeque;
+
 /**
- * Version 11.0
+ * MAIN CLASS - UseCase7PalindromeCheckerApp
+ *
+ * Use Case 7: Deque-Based Palindrome Check
  */
+
 public class PalindromeCheckerApp {
 
-    /**
-     * Application entry point for UC11.
-     * @param args command-line arguments
-     */
     public static void main(String[] args) {
 
-        String input = "racecar";
+        // Hardcoded input
+        String input = "refer";
 
-        PalindromeService service = new PalindromeService();
-        boolean result = service.checkPalindrome(input);
+        // Create deque
+        Deque<Character> deque = new ArrayDeque<>();
 
-        System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + result);
-    }
-}
-
-/**
- * Service class that contains palindrome logic.
- */
-class PalindromeService {
-
-    /**
-     * Checks whether the input string is a palindrome.
-     * @param input input string
-     * @return true if palindrome, false otherwise
-     */
-    public boolean checkPalindrome(String input) {
-
-        int start = 0;
-        int end = input.length() - 1;
-
-        // Compare characters moving inward
-        while (start < end) {
-
-            if (input.charAt(start) != input.charAt(end)) {
-                return false;
-            }
-
-            start++;
-            end--;
+        // Add characters to deque
+        for (char c : input.toCharArray()) {
+            deque.addLast(c);
         }
 
-        return true;
+        boolean isPalindrome = true;
+
+        // Compare front and rear
+        while (deque.size() > 1) {
+            if (deque.removeFirst() != deque.removeLast()) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        // Display result
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + isPalindrome);
     }
 }
