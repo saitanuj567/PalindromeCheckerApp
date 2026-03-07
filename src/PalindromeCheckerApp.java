@@ -12,16 +12,16 @@ public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // ⭐ Hardcoded input
+        // Hardcoded input
         String input = "civic";
 
-        // ⭐ Queue (FIFO)
+        // Queue (FIFO)
         Queue<Character> queue = new LinkedList<>();
 
-        // ⭐ Stack (LIFO)
+        // Stack (LIFO)
         Stack<Character> stack = new Stack<>();
 
-        // ⭐ Insert characters into both
+        // Insert characters into both
         for (char c : input.toCharArray()) {
             queue.add(c);
             stack.push(c);
@@ -29,7 +29,7 @@ public class PalindromeCheckerApp {
 
         boolean isPalindrome = true;
 
-        // ⭐ Compare until queue empty
+        // Compare characters
         while (!queue.isEmpty()) {
             if (queue.remove() != stack.pop()) {
                 isPalindrome = false;
@@ -37,7 +37,7 @@ public class PalindromeCheckerApp {
             }
         }
 
-        // ⭐ Display result
+        // Display result
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindrome);
     }
