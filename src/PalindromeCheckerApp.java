@@ -1,39 +1,46 @@
-import java.util.Deque;
-import java.util.ArrayDeque;
-
-/**
- * MAIN CLASS - UseCase7PalindromeCheckerApp
- *
- * Use Case 7: Deque-Based Palindrome Check
- */
-
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Hardcoded input
-        String input = "refer";
+        String input = "level";
 
-        // Create deque
-        Deque<Character> deque = new ArrayDeque<>();
+        PalindromeStrategy strategy = new StackStrategy();
 
-        // Add characters to deque
+        boolean result = strategy.check(input);
+
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + result);
+    }
+}
+
+/**
+ * Strategy interface for palindrome validation
+ */
+interface PalindromeStrategy {
+    boolean check(String input);
+}
+
+/**
+ * Stack based implementation of PalindromeStrategy
+ */
+class StackStrategy implements PalindromeStrategy {
+
+    public boolean check(String input) {
+
+        java.util.Stack<Character> stack = new java.util.Stack<>();
+
+        // Push characters into stack
         for (char c : input.toCharArray()) {
-            deque.addLast(c);
+            stack.push(c);
         }
 
-        boolean isPalindrome = true;
-
-        // Compare front and rear
-        while (deque.size() > 1) {
-            if (deque.removeFirst() != deque.removeLast()) {
-                isPalindrome = false;
-                break;
+        // Compare characters
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) {
+                return false;
             }
         }
 
-        // Display result
-        System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome);
+        return true;
     }
 }
