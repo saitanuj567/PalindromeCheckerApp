@@ -21,15 +21,15 @@ public class PalindromeCheckerApp {
      */
     private static boolean check(String s, int start, int end) {
 
-        // ⭐ Base condition
+        // Base condition
         if (start >= end)
             return true;
 
-        // ⭐ Mismatch condition
+        // Mismatch condition
         if (s.charAt(start) != s.charAt(end))
             return false;
 
-        // ⭐ Recursive call
+        // Recursive call
         return check(s, start + 1, end - 1);
     }
 }
