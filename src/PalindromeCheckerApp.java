@@ -11,20 +11,20 @@ public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // ⭐ Hardcoded input
+        // Hardcoded input
         String input = "refer";
 
-        // ⭐ Create deque
+        // Create deque
         Deque<Character> deque = new ArrayDeque<>();
 
-        // ⭐ Add characters to deque
+        // Add characters to deque
         for (char c : input.toCharArray()) {
             deque.addLast(c);
         }
 
         boolean isPalindrome = true;
 
-        // ⭐ Compare front and rear
+        // Compare front and rear
         while (deque.size() > 1) {
             if (deque.removeFirst() != deque.removeLast()) {
                 isPalindrome = false;
@@ -32,7 +32,7 @@ public class PalindromeCheckerApp {
             }
         }
 
-        // ⭐ Display result
+        // Display result
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindrome);
     }
