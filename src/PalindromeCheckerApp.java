@@ -1,31 +1,32 @@
 /**
- * MAIN CLASS - UseCase4PalindromeCheckerApp
+ * MAIN CLASS - UseCase10PalindromeCheckerApp
  *
- * Use Case 4: Character Array Based Palindrome Check
+ * Use Case 10: Case-Insensitive & Space-Ignored Palindrome Check
  */
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Hardcoded string
-        String input = "madam";
+        // Hardcoded input
+        String input = "A man a plan a canal Panama";
 
-        // Convert to character array
-        char[] chars = input.toCharArray();
+        // Normalize string (remove spaces + lowercase)
+        String normalized = input.replaceAll("\\s+", "").toLowerCase();
 
         boolean isPalindrome = true;
 
         // Compare characters from both ends
-        for (int i = 0; i < chars.length / 2; i++) {
-            if (chars[i] != chars[chars.length - 1 - i]) {
+        for (int i = 0; i < normalized.length() / 2; i++) {
+
+            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
                 isPalindrome = false;
                 break;
             }
         }
 
         // Display result
-        System.out.println("Input text: " + input);
-        System.out.println("Is it a Palindrome? : " + isPalindrome);
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + isPalindrome);
     }
 }
