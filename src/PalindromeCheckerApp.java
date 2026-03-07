@@ -1,9 +1,9 @@
-import java.util.LinkedList;
+import java.util.Stack;
 
 /**
- * MAIN CLASS - UseCase8PalindromeCheckerApp
+ * MAIN CLASS - UseCase5PalindromeCheckerApp
  *
- * Use Case 8: LinkedList-Based Palindrome Check
+ * Use Case 5: Stack-Based Palindrome Check
  */
 
 public class PalindromeCheckerApp {
@@ -11,21 +11,21 @@ public class PalindromeCheckerApp {
     public static void main(String[] args) {
 
         // Hardcoded input
-        String input = "level";
+        String input = "noon";
 
-        // Create LinkedList
-        LinkedList<Character> list = new LinkedList<>();
+        // Create stack
+        Stack<Character> stack = new Stack<>();
 
-        // Add characters to list
+        // Push characters into stack
         for (char c : input.toCharArray()) {
-            list.add(c);
+            stack.push(c);
         }
 
         boolean isPalindrome = true;
 
-        // Compare first and last elements
-        while (list.size() > 1) {
-            if (!list.removeFirst().equals(list.removeLast())) {
+        // Compare with popped characters
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
