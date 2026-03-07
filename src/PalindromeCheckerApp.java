@@ -1,4 +1,4 @@
-public class PalindromeCheckerApp{
+public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
@@ -21,27 +21,20 @@ interface PalindromeStrategy {
 }
 
 /**
- * This class provides a Stack based implementation
- * of the PalindromeStrategy interface.
- * It uses LIFO behavior to reverse characters
- * and compare them with the original sequence.
+ * Stack based implementation of PalindromeStrategy
  */
 class StackStrategy implements PalindromeStrategy {
 
-    /**
-     * Implements palindrome validation using Stack
-     */
     public boolean check(String input) {
 
-        // Create stack to store characters
         java.util.Stack<Character> stack = new java.util.Stack<>();
 
-        // Push each character of input string onto stack
+        // Push characters into stack
         for (char c : input.toCharArray()) {
             stack.push(c);
         }
 
-        // Compare characters by popping from stack
+        // Compare characters
         for (char c : input.toCharArray()) {
             if (c != stack.pop()) {
                 return false;
